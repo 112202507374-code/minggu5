@@ -1,0 +1,582 @@
+/* Penyesuaian warna saja, tata letak tetap seperti desain awal */
+body {
+    color: #1f2937;
+    margin: 0;
+    padding: 0 0 20px;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #eef5ee;
+    /* Background: gradasi lembut + pola kotak-kotak tipis */
+    background-image:
+        linear-gradient(rgba(47, 107, 79, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(47, 107, 79, 0.07) 1px, transparent 1px),
+        linear-gradient(160deg, #e4f1e6 0%, #f7fbf3 50%, #fdf3da 100%);
+    background-size: 32px 32px, 32px 32px, 100% 100%;
+    background-attachment: fixed;
+}
+
+/* ===== Kotak-kotak pembungkus tiap bagian ===== */
+header, section, footer {
+    width: calc(100% - 32px);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #9dbfa9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(31, 77, 58, 0.12);
+    padding: 18px 22px;
+}
+header { margin-top: 22px; border-top: 5px solid #2f6b4f; }
+/* ===== Navigasi Bootstrap ===== */
+.navbar-utama {
+    background: linear-gradient(#2f6b4f, #1f4d3a);
+    border-bottom: 3px solid #b45309;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.navbar-utama .navbar-brand,
+.navbar-utama .navbar-brand:hover { color: #ffffff; font-weight: 700; letter-spacing: 0.4px; }
+.navbar-utama .nav-link {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.45rem 0.65rem;
+    margin: 0 2px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.navbar-utama .nav-link:hover,
+.navbar-utama .nav-link:focus { color: #ffffff; background-color: rgba(255, 255, 255, 0.16); }
+.navbar-utama .nav-link.active { color: #5a3d0a; background-color: #f6e3b4; }
+/* Dropdown */
+.navbar-utama .dropdown-toggle::after { vertical-align: 0.15em; }
+.navbar-utama .dropdown-menu {
+    margin-top: 8px;
+    padding: 6px;
+    border: 1px solid #9dbfa9;
+    border-top: 3px solid #2f6b4f;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+.navbar-utama .dropdown-item {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f4d3a;
+    border-radius: 6px;
+}
+.navbar-utama .dropdown-item:hover,
+.navbar-utama .dropdown-item:focus { color: #1f4d3a; background-color: #e3f0e6; }
+.navbar-utama .dropdown-item.active,
+.navbar-utama .dropdown-item:active { color: #ffffff; background-color: #2f6b4f; }
+
+@media (max-width: 1199.98px) {
+    .navbar-utama .navbar-nav { padding-top: 8px; }
+    .navbar-utama .nav-link { margin: 2px 0; }
+}
+
+section { scroll-margin-top: 80px; }
+section h2 {
+    margin-top: 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #c9dfd0;
+}
+header hr { display: none; }
+footer { margin-top: 12px; padding: 4px 22px; }
+body > hr { display: none; }
+body > br { display: block; content: ""; margin-top: 4px; }
+h1, h2 { color: #1f4d3a; }
+h3 { color: #3a7a5a; }
+a { color: #2f7a55; }
+a:hover { color: #b45309; }
+hr { border: 0; border-top: 2px solid #1f4d3a; }
+table { border-collapse: collapse; background-color: #ffffff; }
+th { background-color: #2f6b4f; color: #ffffff; }
+td, th { border: 1px solid #9dbfa9; }
+tr:nth-child(even) td { background-color: #f3f9f4; }
+form table, form table td { background-color: transparent; border: none; }
+input[type="submit"] { background-color: #2f6b4f; color: #ffffff; border: none; padding: 5px 14px; cursor: pointer; }
+input[type="reset"] { background-color: #f6e3b4; color: #5a3d0a; border: none; padding: 5px 14px; cursor: pointer; }
+
+/* ===== Galeri sertifikat: grid + klik untuk memperbesar ===== */
+.grid-sertifikat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 10px 0 20px;
+}
+.kartu-sertifikat {
+    background-color: #ffffff;
+    border: 1px solid #9dbfa9;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+.kartu-sertifikat .thumb {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+    overflow: hidden;
+    border-radius: 6px;
+}
+.kartu-sertifikat .thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.kartu-sertifikat .thumb:hover img { transform: scale(1.05); }
+.kartu-sertifikat figcaption,
+.kartu-sertifikat .keterangan {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #1f4d3a;
+}
+
+/* ===== Pop-up sertifikat (Popover HTML, tanpa JavaScript) =====
+   Tampil di "top layer" browser, jadi selalu menutupi seluruh layar
+   dan tidak terpengaruh kotak/animasi di sekitarnya. */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 20px;
+    border: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: rgba(10, 30, 20, 0.88);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+.lightbox:popover-open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* Area kosong di belakang gambar: klik untuk menutup */
+.lightbox .area-tutup {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-out;
+}
+.lightbox img {
+    position: relative;
+    z-index: 1;
+    flex: 0 1 auto;
+    min-height: 0;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 110px);
+    object-fit: contain;
+    background: #ffffff;
+    border: 6px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    animation: membesar 0.3s ease, melayang 3s ease-in-out 0.3s infinite;
+}
+.lightbox .petunjuk {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #ffffff;
+    pointer-events: none;
+}
+.lightbox .tutup {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    font-size: 20px;
+    line-height: 44px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #b45309;
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.lightbox .tutup:hover { background-color: #d97706; }
+
+/* Browser lama tanpa Popover: sembunyikan pop-up agar tidak berantakan */
+@supports not selector(:popover-open) {
+    .lightbox { display: none !important; }
+    .kartu-sertifikat .thumb { cursor: default; }
+}
+
+@keyframes melayang {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+@keyframes membesar {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+}
+
+/* ===== Riwayat Pendidikan: kartu kotak rapi ===== */
+.grid-kotak {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 12px;
+}
+.kotak {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #ffffff;
+    border: 1px solid #9dbfa9;
+    border-top: 5px solid #2f6b4f;
+    border-radius: 10px;
+    padding: 16px 16px 18px;
+    box-shadow: 0 3px 8px rgba(31, 77, 58, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+.kotak:hover,
+.kotak:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(31, 77, 58, 0.28);
+}
+.kotak h4 {
+    margin: 0;
+    padding-bottom: 8px;
+    font-size: 15px;
+    color: #1f4d3a;
+    border-bottom: 1px dashed #9dbfa9;
+}
+.kotak p { margin: 0; }
+.kotak a { font-weight: bold; text-decoration: none; }
+.kotak a:hover { text-decoration: underline; }
+
+/* Tahun berbentuk pil */
+#pendidikan .kotak .tahun {
+    display: inline-block;
+    padding: 3px 12px;
+    font-size: 13px;
+    color: #1f4d3a;
+    background-color: #e3f0e6;
+    border: 1px solid #9dbfa9;
+    border-radius: 999px;
+}
+
+/* Keterangan (baris terakhir) berbentuk lencana */
+#pendidikan .kotak p:last-child {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 3px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #1f4d3a;
+    background-color: #d6ecdc;
+    border-radius: 6px;
+}
+
+/* Kartu terakhir (S1 / sedang ditempuh) diberi warna berbeda */
+#pendidikan .kotak:last-child { border-top-color: #b45309; background-color: #fffaf0; }
+#pendidikan .kotak:last-child p:last-child { color: #5a3d0a; background-color: #f6e3b4; }
+
+/* ===== Profil Saya: kotak bermotif ===== */
+.kotak-profil {
+    display: block;
+    overflow: hidden;
+    padding: 24px 26px;
+    border-top: 5px solid #2f6b4f;
+    border-left: 8px solid #2f6b4f;
+    background-color: #ffffff;
+    /* Motif: titik-titik halus + garis diagonal tipis + lapisan putih agar teks tetap terbaca */
+    background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.78) 100%),
+        radial-gradient(rgba(47, 107, 79, 0.28) 1.5px, transparent 1.6px),
+        repeating-linear-gradient(135deg, rgba(47, 107, 79, 0.06) 0, rgba(47, 107, 79, 0.06) 2px, transparent 2px, transparent 14px);
+    background-size: 100% 100%, 20px 20px, auto;
+}
+.kotak-profil:hover,
+.kotak-profil:focus { transform: none; }
+
+/* Lingkaran dekoratif di pojok kanan atas dan kiri bawah */
+.kotak-profil::before {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(47, 107, 79, 0.22) 0%, rgba(47, 107, 79, 0.05) 60%, transparent 70%);
+    border: 2px dashed rgba(47, 107, 79, 0.35);
+    pointer-events: none;
+}
+.kotak-profil::after {
+    content: "";
+    position: absolute;
+    bottom: -45px; right: 40px;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(180, 83, 9, 0.18) 0%, transparent 70%);
+    border: 2px solid rgba(180, 83, 9, 0.25);
+    pointer-events: none;
+}
+
+/* Foto diberi bingkai ganda supaya tampak formal */
+.kotak-profil img {
+    position: relative;
+    z-index: 1;
+    object-fit: cover;
+    border: 5px solid #ffffff;
+    outline: 3px solid #2f6b4f;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(31, 77, 58, 0.35);
+}
+
+.kotak-profil p {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 12px;
+    line-height: 1.75;
+    text-align: justify;
+}
+.kotak-profil p:first-of-type {
+    font-size: 16px;
+    color: #1f4d3a;
+}
+/* Kata kunci Business Analysis disorot seperti stabilo */
+.kotak-profil b {
+    padding: 0 3px;
+    background: linear-gradient(transparent 55%, #f6e3b4 55%);
+}
+
+/* ===== Sentuhan profesional (tipis) ===== */
+html { scroll-behavior: smooth; }
+::selection { background-color: #f6e3b4; color: #1f4d3a; }
+
+header h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.35rem;
+}
+header h3 { font-size: 1.05rem; font-weight: 500; }
+header .tagline {
+    display: inline-block;
+    margin: 0.25rem 0 0.5rem;
+    padding: 3px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #5a3d0a;
+    background-color: #f6e3b4;
+    border-radius: 999px;
+}
+section h2 { font-size: 1.4rem; font-weight: 700; }
+section h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.2rem; }
+th { text-align: center; }
+footer { color: #4b5563; font-size: 14px; }
+footer p { margin: 0.6rem 0; }
+
+/* Form kontak */
+#kontak .form-control,
+#kontak .form-select {
+    width: min(340px, 58vw);
+    border-color: #9dbfa9;
+    border-radius: 8px;
+}
+#kontak .form-control:focus,
+#kontak .form-select:focus {
+    border-color: #2f6b4f;
+    box-shadow: 0 0 0 0.2rem rgba(47, 107, 79, 0.2);
+}
+#kontak input[type="radio"],
+#kontak input[type="checkbox"] { margin-left: 8px; }
+#kontak input[type="submit"],
+#kontak input[type="reset"] { border-radius: 8px; font-weight: 600; padding: 7px 18px; }
+
+/* Tombol kembali ke atas */
+.btn-ke-atas {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1010;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2f6b4f;
+    border-bottom: 3px solid #1f4d3a;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.btn-ke-atas:hover { color: #ffffff; background-color: #b45309; transform: translateY(-3px); }
+
+/* =====================================================
+   EFEK TANPA JAVASCRIPT (murni CSS)
+   ===================================================== */
+
+/* ---------- 1. Teks mengetik di tagline ---------- */
+header .tagline {
+    box-sizing: content-box;
+    width: calc(22ch + 2px);          /* 22 huruf "Calon Business Analyst" */
+    padding: 7px 18px;
+    text-align: left;
+    font-family: 'Courier New', ui-monospace, Consolas, monospace;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #f6e3b4;
+    background-color: #1f4d3a;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(31, 77, 58, 0.35);
+}
+header .tagline .ketik {
+    display: block;
+    box-sizing: content-box;
+    width: 22ch;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #f6e3b4;
+    animation: ketik 8s steps(22, end) infinite, kedip 0.8s step-end infinite;
+}
+@keyframes ketik {
+    0%   { width: 0; }
+    30%  { width: 22ch; }
+    75%  { width: 22ch; }
+    92%  { width: 0; }
+    100% { width: 0; }
+}
+@keyframes kedip {
+    50% { border-right-color: transparent; }
+}
+
+/* ---------- 4. Angka berjalan ---------- */
+@property --angka {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+}
+.judul-ringkas {
+    margin: 0 0 14px;
+    text-align: center;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.grid-stat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+}
+.stat {
+    text-align: center;
+    padding: 18px 10px 14px;
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(47, 107, 79, 0.14) 1.5px, transparent 1.6px);
+    background-size: 16px 16px;
+    border: 1px solid #9dbfa9;
+    border-bottom: 4px solid #2f6b4f;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(31, 77, 58, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat:nth-child(even) { border-bottom-color: #b45309; }
+.stat:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(31, 77, 58, 0.28); }
+.angka {
+    display: block;
+    font-size: 2.7rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #2f6b4f;
+    counter-reset: n var(--angka);
+    animation: hitung 2.2s ease-out both;
+}
+.angka::after { content: counter(n); }
+.stat:nth-child(even) .angka { color: #b45309; }
+.label-stat {
+    display: block;
+    margin-top: 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #4b5563;
+}
+/* hanya titik awal; angka akhir diambil dari --angka di HTML */
+@keyframes hitung { from { --angka: 0; } }
+
+/* ---------- 2. Muncul saat di-scroll (Chrome, Edge, Safari baru) ---------- */
+@keyframes muncul {
+    from { opacity: 0; transform: translateY(40px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+    section, .grid-kotak .kotak, .kartu-sertifikat, .stat {
+        animation: muncul linear backwards;
+        animation-timeline: view();
+        animation-range: entry 0px entry 260px;
+    }
+}
+
+/* ---------- 3. Garis progres scroll ---------- */
+.progres-scroll { display: none; }
+@keyframes progres {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+@supports (animation-timeline: scroll()) {
+    .progres-scroll {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        z-index: 1100;
+        background: linear-gradient(90deg, #b45309, #f6e3b4);
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        animation: progres linear both;
+        animation-timeline: scroll(root block);
+    }
+}
+
+/* ---------- Hormati pengguna yang mematikan animasi ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+    html { scroll-behavior: auto; }
+}
